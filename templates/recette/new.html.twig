@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Recette{% endblock %}
+
+{% block body %}
+<h1 class="text-center">Ajouter une recette</h1>
+<section class="container-fluid mt-5 col-md-6 bg-white rounded">
+    {{ include('recette/_form.html.twig') }}
+    {{ include('ingredient/_form.html.twig') }}
+</section>
+{% endblock %}

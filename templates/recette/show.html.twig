@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recette{% endblock %}
+
+
+{% block body %}    
+    <section class="container">
+        <div class="row">
+            <div class="col card shadow rounded my-5 mx-4">
+                <div class="row">
+                    <div class="col my-auto">
+                      <img class="card-img-left thumbnail w-100" src="{{asset('uploads/photos/' ~ recette.img)}}">
+                    </div>
+                    <div class="col">
+                        <div class="card-body text-center p-5 h-100 d-flex flex-column">
+                            <h2 class="card-title display-3">{{recette.nom}}</h2>
+                            <div class="card shadow-sm rounded mt-5">
+                                <div class="card-header bg-success text-white">
+                                    <h5>Ingrédients</h5>
+                                </div>
+                                <ul class="card-list text-start list-group list-group-flush">
+                                    {% for ingredient in recette.ingredients %}
+                                        <li class="list-group-item">{{ ingredient.nom|e }} ({{ingredient.quantite}}{{ingredient.unite}})</li>
+                                    {% endfor %}
+                                </ul>   
+                            </div>
+                            <div class="card shadow-sm rounded my-5">
+                                <div class="card-header bg-success text-white">
+                                    <h5>Instructions</h5>
+                                </div>
+                                <div class="text-start mx-2 my-2">
+                                    {{recette.instruction |nl2br}}
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-center mt-auto">
+                                <a class ="btn btn-light card-link" role="button" href="{{ path('recette_index') }}">back to list</a>
+
+                                <a class ="btn btn-primary card-link me-3 align-self-end" role="button" href="{{ path('recette_edit', {'id': recette.id}) }}">edit</a>
+
+                                {{ include('recette/_delete_form.html.twig') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+    </section>
+    
+
+{% endblock %}

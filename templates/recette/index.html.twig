@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recette index{% endblock %}
+
+{% block body %}
+    <h1 class="text-center display-2">Nos recettes</h1>
+    <div class="container">
+        <div class="row">
+                {% for recette in recettes %}
+                    <div class="card mt-4 mb-4 mx-4 col-md-4" style="width: 28%;">
+                        <a href="{{ path('recette_show', {'id': recette.id}) }}"><img class="card-img-top" src='..\uploads\photos\{{recette.img}}'></a>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ recette.nom }}</h5>
+                            <a role="button" class="btn btn-success" href="{{ path('recette_edit', {'id': recette.id}) }}">Modifier</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <tr>
+                        <td colspan="4">no records found</td>
+                    </tr>
+                {% endfor %}
+        </div>
+    </div>
+{% endblock %}

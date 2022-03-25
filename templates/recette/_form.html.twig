@@ -1,0 +1,23 @@
+{{ form_start(form) }}
+    {#{{ form_widget(form) }}#}
+    <div class="row justify-content-center">
+        <div class="col-md-4 mt-5">
+            {{ form_label(form.nom, 'Nom de la recette') }}
+            {{ form_widget(form.nom, {'attr': {'class': 'nomRecette'}}) }}
+        </div>
+        <div class="col-md-4 mt-5">
+            {{ form_label(form.img, 'Ajoutez une photo') }}
+            {{ form_widget(form.img, {'attr': {'class': 'photoRecette'}}) }}
+        </div>
+    </div>
+    <div class="row my-5 justify-content-center">
+        <div class="col-md-8">
+            {{ form_label(form.ingredients, 'Choisissez un sirop') }}
+            {{ form_widget(form.ingredients, {'attr': {'class': 'choixSirop text-center'}}) }}
+        </div>
+    </div>
+    <div class="text-center">
+        <button class="btn btn-primary mb-3">{{ button_label|default('Continuer') }}</button>
+        <a class="text-decoration-none btn btn-danger mb-3" href="{{ path('recette_index') }}" role="button">Retour</a>
+    </div>
+{{ form_end(form) }}
